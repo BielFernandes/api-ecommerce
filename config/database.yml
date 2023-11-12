@@ -1,0 +1,23 @@
+
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  user: biel
+  password: root
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: api_ecommerce_development
+
+test:
+  <<: *default
+  database: api_ecommerce_test
+
+production:
+  <<: *default
+  database: api_ecommerce_production
+  username: api_ecommerce
+  password: <%= ENV["API_ECOMMERCE_DATABASE_PASSWORD"] %>
